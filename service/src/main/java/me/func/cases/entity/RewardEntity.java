@@ -13,6 +13,8 @@ import javax.persistence.*;
 @Entity
 @Data
 @Table(name = "reward")
+@AllArgsConstructor
+@NoArgsConstructor
 public class RewardEntity {
 	@Id
 	@GeneratedValue
