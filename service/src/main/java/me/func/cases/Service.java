@@ -14,7 +14,7 @@ public class Service {
 	public static void main(String[] args) {
 		EntityManagerFactory entityManagerFactory = Persistence.createEntityManagerFactory("default");
 		// Начинаем работу микросервиса
-		MicroserviceBootstrap.bootstrap(new MicroServicePlatform(2));
+		//MicroserviceBootstrap.bootstrap(new MicroServicePlatform(2));
 	}
 
 }

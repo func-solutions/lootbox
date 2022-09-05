@@ -22,13 +22,11 @@ public class EventEntity {
 	@Basic
 	private Timestamp timestamp;
 
-	@OneToOne(mappedBy = "pack", targetEntity = PackEntity.class)
-	@Column(name = "pack")
-	private PackEntity packEntity;
+	@OneToOne(targetEntity = PackEntity.class)
+	private PackEntity pack;
 
-	@OneToOne(mappedBy = "case", targetEntity = CaseEntity.class)
-	@Column(name = "case")
-	private CaseEntity caseEntity;
+	@OneToOne(targetEntity = BoxEntity.class)
+	private BoxEntity box;
 
 	private UUID playerUuid;
 

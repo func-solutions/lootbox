@@ -24,6 +24,6 @@ public class PackEntity {
 	@Column(name = "image_url")
 	private String imageUrl;
 
-	@OneToMany(mappedBy = "reward", targetEntity = RewardEntity.class)
+	@OneToMany(targetEntity = RewardEntity.class)
 	private Set<RewardEntity> rewards;
 }

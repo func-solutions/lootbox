@@ -1,9 +1,6 @@
 package me.func.cases.entity;
 
-import jakarta.persistence.Column;
-import jakarta.persistence.Entity;
-import jakarta.persistence.OneToOne;
-import jakarta.persistence.Table;
+import jakarta.persistence.*;
 import lombok.Data;
 
 /**
@@ -15,14 +12,16 @@ import lombok.Data;
 @Table(name = "pack_case_relation")
 public class PackCaseRelationEntity {
 
-	@Column(name = "pack_id")
-	@OneToOne(mappedBy = "pack", targetEntity = PackEntity.class)
-	private PackEntity packEntity;
+	@OneToOne(targetEntity = PackEntity.class)
+	private PackEntity pack;
 
-	@Column(name = "case_id")
-	@OneToOne(mappedBy = "case", targetEntity = CaseEntity.class)
-	private CaseEntity caseEntity;
+	@OneToOne(targetEntity = BoxEntity.class)
+	private BoxEntity box;
 
 	private Long amount;
+
+	@Id
+	@GeneratedValue
+	private Long id;
 
 }

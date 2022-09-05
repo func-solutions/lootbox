@@ -23,6 +23,5 @@ public class RewardEntity {
 	private RewardType type;
 
 	@JdbcTypeCode(SqlTypes.JSON)
-	@Column(name = "data")
 	private RewardWrapper reward;
 }

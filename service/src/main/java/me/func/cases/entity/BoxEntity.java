@@ -11,11 +11,11 @@ import java.util.Set;
  */
 @Entity
 @Data
-@Table(name = "case")
-public class CaseEntity {
+@Table(name = "box")
+public class BoxEntity {
 	@Id
 	@GeneratedValue
-	@Column(name = "case_id")
+	@Column(name = "box_id")
 	private Long id;
 
 	private Double price;
