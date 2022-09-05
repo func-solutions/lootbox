@@ -11,6 +11,8 @@ pluginManagement {
                 password = System.getenv("CRI_REPO_PASSWORD") ?: System.getenv("CRISTALIX_REPO_PASSWORD") ?: System.getenv("REPO_C7X_PASSWORD")
             }
         }
+        maven { url = uri("https://repo.spring.io/milestone") }
+        maven { url = uri("https://repo.spring.io/snapshot") }
     }
     plugins {
         kotlin("jvm") version "1.6.21"
@@ -30,6 +32,8 @@ dependencyResolutionManagement {
                 password = System.getenv("CRI_REPO_PASSWORD") ?: System.getenv("CRISTALIX_REPO_PASSWORD") ?: System.getenv("REPO_C7X_PASSWORD")
             }
         }
+        maven { url = uri("https://repo.spring.io/milestone") }
+        maven { url = uri("https://repo.spring.io/snapshot") }
     }
 
     repositoriesMode.set(RepositoriesMode.FAIL_ON_PROJECT_REPOS)

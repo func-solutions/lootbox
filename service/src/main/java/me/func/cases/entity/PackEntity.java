@@ -1,9 +1,9 @@
 package me.func.cases.entity;
 
-import jakarta.persistence.*;
 import lombok.Data;
 import me.func.cases.data.RareType;
 
+import javax.persistence.*;
 import java.util.Set;
 
 /**

@@ -1,7 +1,8 @@
 package me.func.cases.entity;
 
-import jakarta.persistence.*;
 import lombok.Data;
+
+import javax.persistence.*;
 
 /**
  * @author func 05.09.2022

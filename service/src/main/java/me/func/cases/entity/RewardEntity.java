@@ -1,11 +1,10 @@
 package me.func.cases.entity;
 
-import jakarta.persistence.*;
 import lombok.*;
 import me.func.cases.data.RewardType;
 import me.func.cases.data.RewardWrapper;
-import org.hibernate.annotations.JdbcTypeCode;
-import org.hibernate.type.SqlTypes;
+
+import javax.persistence.*;
 
 /**
  * @author func 05.09.2022
@@ -22,6 +21,5 @@ public class RewardEntity {
 
 	private RewardType type;
 
-	@JdbcTypeCode(SqlTypes.JSON)
 	private RewardWrapper reward;
 }
