@@ -1,8 +1,8 @@
-package me.func.cases.entity;
+package me.func.ebisu.entity;
 
 import lombok.*;
-import me.func.cases.data.RewardType;
-import me.func.cases.data.RewardWrapper;
+import me.func.ebisu.data.RewardType;
+import me.func.ebisu.data.RewardWrapper;
 
 import javax.persistence.*;
 
@@ -21,7 +21,9 @@ public class RewardEntity {
 	@Column(name = "reward_id")
 	private Long id;
 
+	@Column(nullable = false)
 	private RewardType type;
 
+	@Column(nullable = false)
 	private RewardWrapper reward;
 }

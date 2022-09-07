@@ -1,11 +1,10 @@
-package me.func.cases;
+package me.func.ebisu;
 
-import me.func.cases.data.RewardType;
-import me.func.cases.data.RewardWrapper;
-import me.func.cases.entity.RewardEntity;
-import me.func.cases.repository.RewardRepository;
+import me.func.ebisu.data.RewardType;
+import me.func.ebisu.data.RewardWrapper;
+import me.func.ebisu.entity.RewardEntity;
+import me.func.ebisu.repository.RewardRepository;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.boot.context.event.ApplicationReadyEvent;
 import org.springframework.context.event.ContextRefreshedEvent;
 import org.springframework.context.event.EventListener;
 import org.springframework.stereotype.Component;
@@ -27,7 +26,6 @@ public class MicroService {
 
 	@EventListener(ContextRefreshedEvent.class)
 	public void run() {
-		System.out.println(1);
 		rewardRepository.save(new RewardEntity(2L, RewardType.GRAFFITI, new RewardWrapper(
 				UUID.randomUUID(), ""
 		)));

@@ -1,4 +1,4 @@
-package me.func.cases.entity;
+package me.func.ebisu.entity;
 
 import lombok.Data;
 

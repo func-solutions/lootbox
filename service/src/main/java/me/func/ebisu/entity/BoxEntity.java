@@ -1,4 +1,4 @@
-package me.func.cases.entity;
+package me.func.ebisu.entity;
 
 import lombok.Data;
 
@@ -17,9 +17,12 @@ public class BoxEntity {
 	@Column(name = "box_id")
 	private Long id;
 
+	@Column(nullable = false)
 	private Double price;
 
+	@Column(nullable = false)
 	private String title;
 
+	@Column(nullable = false)
 	private String currency;
 }

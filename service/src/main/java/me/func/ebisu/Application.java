@@ -1,7 +1,6 @@
-package me.func.cases;
+package me.func.ebisu;
 
 import org.springframework.boot.SpringApplication;
-import org.springframework.boot.WebApplicationType;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.transaction.annotation.EnableTransactionManagement;
 
@@ -14,8 +13,6 @@ import org.springframework.transaction.annotation.EnableTransactionManagement;
 public class Application {
 
 	public static void main(String[] args) {
-		SpringApplication application = new SpringApplication(Application.class);
-		application.setWebApplicationType(WebApplicationType.NONE);
-		application.run(args);
+		SpringApplication.run(Application.class, args);
 	}
 }

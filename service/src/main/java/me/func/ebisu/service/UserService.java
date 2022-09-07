@@ -1,4 +1,4 @@
-package me.func.cases.service;
+package me.func.ebisu.service;
 
 /**
  * @author func 06.09.2022

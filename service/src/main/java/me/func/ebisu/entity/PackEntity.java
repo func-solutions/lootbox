@@ -1,7 +1,8 @@
-package me.func.cases.entity;
+package me.func.ebisu.entity;
 
+import lombok.Builder;
 import lombok.Data;
-import me.func.cases.data.RareType;
+import me.func.ebisu.data.RareType;
 
 import javax.persistence.*;
 import java.util.Set;
@@ -13,6 +14,7 @@ import java.util.Set;
 @Entity
 @Data
 @Table(name = "pack")
+@Builder
 public class PackEntity {
 	@Id
 	@GeneratedValue

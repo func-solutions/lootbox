@@ -1,5 +1,6 @@
-package me.func.cases.entity;
+package me.func.ebisu.entity;
 
+import lombok.Builder;
 import lombok.Data;
 
 import javax.persistence.*;
@@ -13,6 +14,7 @@ import java.util.UUID;
 @Entity
 @Data
 @Table(name = "event")
+@Builder
 public class EventEntity {
 	@Id
 	@GeneratedValue

@@ -1,4 +1,4 @@
-package me.func.cases.data;
+package me.func.ebisu.data;
 
 import lombok.AllArgsConstructor;
 

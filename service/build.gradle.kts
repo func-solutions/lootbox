@@ -5,8 +5,6 @@ plugins {
     kotlin("plugin.spring") version "1.6.21"
 }
 
-java.sourceCompatibility = JavaVersion.VERSION_13
-
 dependencies {
     compileOnly("org.projectlombok:lombok:1.18.24")
     annotationProcessor("org.projectlombok:lombok:1.18.24")
@@ -17,6 +15,7 @@ dependencies {
 
     implementation("org.springframework.boot:spring-boot-starter")
     implementation("org.springframework.boot:spring-boot-starter-data-jpa")
+    implementation("org.springframework.boot:spring-boot-starter-web")
 }
 
 tasks.getByName<Test>("test") {
