@@ -45,6 +45,8 @@ dependencyResolutionManagement {
 }
 
 rootProject.name = "ebisu"
+
 include("service")
-include("bot")
+include("protocol")
 include("client")
+include("mod")

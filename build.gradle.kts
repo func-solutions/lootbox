@@ -10,8 +10,8 @@ plugins {
 }
 
 allprojects {
-    group = "me.func.ebisu"
-    version = "1.0.0"
+    group = "me.func"
+    version = "1.0.3"
 }
 
 subprojects {

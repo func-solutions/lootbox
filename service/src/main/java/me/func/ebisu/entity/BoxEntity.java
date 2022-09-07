@@ -20,9 +20,9 @@ public class BoxEntity {
 	@Column(nullable = false)
 	private Double price;
 
-	@Column(nullable = false)
 	private String title;
 
-	@Column(nullable = false)
 	private String currency;
+
+	private String status;
 }

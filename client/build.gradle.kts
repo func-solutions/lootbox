@@ -9,7 +9,7 @@ dependencies {
 publishing {
     publications {
         create<MavenPublication>("maven") {
-            artifactId = "animation-api"
+            artifactId = "ebisu-client"
             from(components["java"])
         }
     }
