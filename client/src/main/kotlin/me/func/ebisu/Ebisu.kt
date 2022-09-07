@@ -1,6 +1,7 @@
 package me.func.ebisu
 
 import me.func.ebisu.listener.AcceptClick
+import me.func.mod.conversation.ModLoader
 import me.func.mod.util.listener
 import me.func.mod.util.log
 import org.bukkit.Location
