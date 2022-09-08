@@ -1,15 +1,20 @@
 package me.func.ebisu.entity;
 
-import lombok.Data;
+import lombok.*;
+import org.hibernate.Hibernate;
 
 import javax.persistence.*;
+import java.util.Objects;
 
 /**
  * @author func 05.09.2022
  * @project cases
  */
 @Entity
-@Data
+@Getter
+@Setter
+@ToString
+@RequiredArgsConstructor
 @Table(name = "pack_case_relation")
 public class PackCaseRelationEntity {
 
@@ -25,4 +30,16 @@ public class PackCaseRelationEntity {
 	@GeneratedValue
 	private Long id;
 
+	@Override
+	public boolean equals(Object o) {
+		if (this == o) return true;
+		if (o == null || Hibernate.getClass(this) != Hibernate.getClass(o)) return false;
+		PackCaseRelationEntity that = (PackCaseRelationEntity) o;
+		return id != null && Objects.equals(id, that.id);
+	}
+
+	@Override
+	public int hashCode() {
+		return getClass().hashCode();
+	}
 }

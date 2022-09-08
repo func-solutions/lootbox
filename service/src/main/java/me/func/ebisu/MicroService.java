@@ -1,13 +1,18 @@
 package me.func.ebisu;
 
+import com.fasterxml.jackson.databind.ObjectMapper;
 import me.func.ebisu.data.RewardType;
 import me.func.ebisu.data.RewardWrapper;
 import me.func.ebisu.entity.RewardEntity;
 import me.func.ebisu.repository.RewardRepository;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.context.annotation.Bean;
 import org.springframework.context.event.ContextRefreshedEvent;
 import org.springframework.context.event.EventListener;
 import org.springframework.stereotype.Component;
+import ru.cristalix.core.CoreApi;
+import ru.cristalix.core.microservice.MicroServicePlatform;
+import ru.cristalix.core.microservice.MicroserviceBootstrap;
 
 import java.util.UUID;
 
@@ -26,8 +31,11 @@ public class MicroService {
 
 	@EventListener(ContextRefreshedEvent.class)
 	public void run() {
-		rewardRepository.save(new RewardEntity(2L, RewardType.GRAFFITI, new RewardWrapper(
-				UUID.randomUUID(), ""
-		)));
+		MicroserviceBootstrap.bootstrap(new MicroServicePlatform(2));
+	}
+
+	@Bean
+	public ObjectMapper getObjectMapper() {
+		return new ObjectMapper();
 	}
 }

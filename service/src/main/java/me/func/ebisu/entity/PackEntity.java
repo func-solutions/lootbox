@@ -1,10 +1,11 @@
 package me.func.ebisu.entity;
 
-import lombok.Builder;
-import lombok.Data;
+import lombok.*;
 import me.func.ebisu.data.RareType;
+import org.hibernate.Hibernate;
 
 import javax.persistence.*;
+import java.util.Objects;
 import java.util.Set;
 
 /**
@@ -12,9 +13,13 @@ import java.util.Set;
  * @project cases
  */
 @Entity
-@Data
+@Getter
+@Setter
+@ToString
+@RequiredArgsConstructor
 @Table(name = "pack")
 @Builder
+@NoArgsConstructor
 public class PackEntity {
 	@Id
 	@GeneratedValue
@@ -27,5 +32,19 @@ public class PackEntity {
 	private String imageUrl;
 
 	@OneToMany(targetEntity = RewardEntity.class)
+	@ToString.Exclude
 	private Set<RewardEntity> rewards;
+
+	@Override
+	public boolean equals(Object o) {
+		if (this == o) return true;
+		if (o == null || Hibernate.getClass(this) != Hibernate.getClass(o)) return false;
+		PackEntity that = (PackEntity) o;
+		return id != null && Objects.equals(id, that.id);
+	}
+
+	@Override
+	public int hashCode() {
+		return getClass().hashCode();
+	}
 }

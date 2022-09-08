@@ -22,6 +22,7 @@ object AcceptClick : Listener {
                 description = "Последние\nвыпадения"
                 hint = "Смотреть"
                 texture = "minecraft:mcpatcher/cit/others/hub/quest_month.png"
+                onClick { player, _, _ -> player.performCommand("lootbox:history") }
             },
             button {
                 special = true
@@ -29,12 +30,14 @@ object AcceptClick : Listener {
                 description = "Открыть\nнаборы"
                 hint = "Смотреть"
                 texture = "minecraft:mcpatcher/cit/others/hub/new_lvl_rare_close.png"
+                onClick { player, _, _ -> player.performCommand("lootbox:box") }
             },
             button {
                 title = "Награды"
                 description = "Что может\nвыпасть?"
                 hint = "Смотреть"
                 texture = "minecraft:mcpatcher/cit/others/hub/stock.png"
+                onClick { player, _, _ -> player.performCommand("lootbox:rewards") }
             },
         )
     }

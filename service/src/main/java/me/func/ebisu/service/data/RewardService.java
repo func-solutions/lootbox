@@ -1,4 +1,4 @@
-package me.func.ebisu.service;
+package me.func.ebisu.service.data;
 
 import me.func.ebisu.entity.RewardEntity;
 import me.func.ebisu.repository.RewardRepository;
@@ -13,7 +13,7 @@ import org.springframework.transaction.annotation.Transactional;
 @Service
 public class RewardService {
 
-	private RewardRepository rewardRepository;
+	private final RewardRepository rewardRepository;
 
 	public RewardService(@Autowired RewardRepository rewardRepository) {
 		this.rewardRepository = rewardRepository;
