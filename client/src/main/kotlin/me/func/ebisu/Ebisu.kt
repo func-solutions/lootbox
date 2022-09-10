@@ -7,6 +7,7 @@ import me.func.mod.util.log
 import org.bukkit.Location
 
 class Ebisu {
+
     companion object {
         var lootboxes: Set<Location>? = null
 

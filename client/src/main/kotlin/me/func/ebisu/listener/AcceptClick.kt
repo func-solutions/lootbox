@@ -3,12 +3,9 @@ package me.func.ebisu.listener
 import me.func.ebisu.Ebisu
 import me.func.mod.menu.button
 import me.func.mod.menu.choicer
-import net.minecraft.server.v1_12_R1.Blocks.CHEST
 import org.bukkit.Material
 import org.bukkit.event.EventHandler
 import org.bukkit.event.Listener
-import org.bukkit.event.inventory.InventoryOpenEvent
-import org.bukkit.event.inventory.InventoryType
 import org.bukkit.event.player.PlayerInteractEvent
 
 object AcceptClick : Listener {
@@ -21,23 +18,23 @@ object AcceptClick : Listener {
                 title = "История"
                 description = "Последние\nвыпадения"
                 hint = "Смотреть"
+                command = "box-logs"
                 texture = "minecraft:mcpatcher/cit/others/hub/quest_month.png"
-                onClick { player, _, _ -> player.performCommand("lootbox:history") }
             },
             button {
                 special = true
                 title = "Кейсы"
                 description = "Открыть\nнаборы"
                 hint = "Смотреть"
+                command = "box-list"
                 texture = "minecraft:mcpatcher/cit/others/hub/new_lvl_rare_close.png"
-                onClick { player, _, _ -> player.performCommand("lootbox:box") }
             },
             button {
                 title = "Награды"
                 description = "Что может\nвыпасть?"
                 hint = "Смотреть"
+                command = "box-rewards"
                 texture = "minecraft:mcpatcher/cit/others/hub/stock.png"
-                onClick { player, _, _ -> player.performCommand("lootbox:rewards") }
             },
         )
     }

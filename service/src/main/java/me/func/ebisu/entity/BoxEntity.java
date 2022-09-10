@@ -1,7 +1,6 @@
 package me.func.ebisu.entity;
 
 import lombok.*;
-import me.func.ebisu.data.Button;
 import org.hibernate.Hibernate;
 
 import javax.persistence.*;
@@ -17,7 +16,6 @@ import java.util.Objects;
 @ToString
 @RequiredArgsConstructor
 @Table(name = "box")
-@Builder
 public class BoxEntity {
 	@Id
 	@GeneratedValue

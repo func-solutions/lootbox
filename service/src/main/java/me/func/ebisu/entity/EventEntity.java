@@ -18,7 +18,6 @@ import java.util.UUID;
 @ToString
 @RequiredArgsConstructor
 @Table(name = "event")
-@Builder
 public class EventEntity {
 	@Id
 	@GeneratedValue

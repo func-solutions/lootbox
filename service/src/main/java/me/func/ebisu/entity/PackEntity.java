@@ -18,8 +18,6 @@ import java.util.Set;
 @ToString
 @RequiredArgsConstructor
 @Table(name = "pack")
-@Builder
-@NoArgsConstructor
 public class PackEntity {
 	@Id
 	@GeneratedValue

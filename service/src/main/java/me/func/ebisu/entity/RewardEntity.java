@@ -1,7 +1,6 @@
 package me.func.ebisu.entity;
 
 import lombok.*;
-import me.func.ebisu.data.Button;
 import me.func.ebisu.data.RewardType;
 import me.func.ebisu.data.RewardWrapper;
 import org.hibernate.Hibernate;
@@ -20,7 +19,6 @@ import java.util.Objects;
 @RequiredArgsConstructor
 @Table(name = "reward")
 @AllArgsConstructor
-@NoArgsConstructor
 public class RewardEntity {
 	@Id
 	@GeneratedValue
