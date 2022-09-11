@@ -1,7 +1,6 @@
 package me.func.ebisu;
 
 import lombok.RequiredArgsConstructor;
-import me.func.ebisu.service.user.DefaultCommandService;
 import org.springframework.stereotype.Component;
 import ru.cristalix.core.microservice.MicroServicePlatform;
 import ru.cristalix.core.microservice.MicroserviceBootstrap;
@@ -16,12 +15,9 @@ import javax.annotation.PostConstruct;
 @RequiredArgsConstructor
 public class MicroService {
 
-	private final DefaultCommandService defaultCommandService;
-
 	@PostConstruct
 	public void run() {
 		MicroserviceBootstrap.bootstrap(new MicroServicePlatform(2));
-		defaultCommandService.run();
 	}
 
 }

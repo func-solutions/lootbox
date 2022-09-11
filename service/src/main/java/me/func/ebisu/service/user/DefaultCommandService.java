@@ -10,6 +10,7 @@ import ru.cristalix.core.GlobalSerializers;
 import ru.cristalix.core.globalcommand.GlobalCommandManager;
 import ru.cristalix.core.network.ISocketClient;
 
+import javax.annotation.PostConstruct;
 import java.util.List;
 import java.util.concurrent.TimeUnit;
 import java.util.stream.Stream;
@@ -28,6 +29,7 @@ public class DefaultCommandService {
 			.maximumSize(5)
 			.build();
 
+	@PostConstruct
 	public void run() {
 		GlobalCommandManager manager = new GlobalCommandManager(ISocketClient.get(), "ebisu");
 
