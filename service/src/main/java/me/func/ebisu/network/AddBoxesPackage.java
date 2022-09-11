@@ -1,12 +1,16 @@
 package me.func.ebisu.network;
 
+import lombok.Getter;
+import lombok.RequiredArgsConstructor;
 import me.func.ebisu.entity.BoxEntity;
+import ru.cristalix.core.network.CorePackage;
 
 import java.util.List;
 
-/**
- * @author func 11.09.2022
- * @project ebisu
- */
-public record AddBoxesPackage(List<BoxEntity> boxes) {
+@Getter
+@RequiredArgsConstructor
+public class AddBoxesPackage extends CorePackage {
+
+	private final List<BoxEntity> boxes;
+
 }

@@ -1,24 +1,18 @@
 package me.func.ebisu.entity;
 
 import lombok.*;
-import me.func.ebisu.entity.button.ButtonMirror;
-import me.func.protocol.menu.Button;
 import org.hibernate.Hibernate;
 
 import javax.persistence.*;
 import java.util.Objects;
 
-/**
- * @author func 05.09.2022
- * @project cases
- */
 @Entity
 @Getter
 @Setter
 @ToString
 @RequiredArgsConstructor
 @Table(name = "box")
-public class BoxEntity implements ButtonMirror {
+public class BoxEntity {
 	@Id
 	@GeneratedValue
 	@Column(name = "box_id")
@@ -48,14 +42,4 @@ public class BoxEntity implements ButtonMirror {
 		return getClass().hashCode();
 	}
 
-	@Override
-	public Button asButton() {
-		return Button.builder()
-				.command("box-buy")
-				.title(title)
-				.vault(currency)
-				.price((int) price.doubleValue())
-				.texture(texture)
-				.build();
-	}
 }

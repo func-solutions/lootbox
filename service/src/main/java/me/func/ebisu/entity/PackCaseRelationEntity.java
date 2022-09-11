@@ -6,10 +6,6 @@ import org.hibernate.Hibernate;
 import javax.persistence.*;
 import java.util.Objects;
 
-/**
- * @author func 05.09.2022
- * @project cases
- */
 @Entity
 @Getter
 @Setter
@@ -25,6 +21,12 @@ public class PackCaseRelationEntity {
 	private BoxEntity box;
 
 	private Long amount;
+
+	public PackCaseRelationEntity(PackEntity pack, BoxEntity box, Long amount) {
+		this.pack = pack;
+		this.box = box;
+		this.amount = amount;
+	}
 
 	@Id
 	@GeneratedValue

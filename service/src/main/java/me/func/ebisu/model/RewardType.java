@@ -1,4 +1,4 @@
-package me.func.ebisu.data;
+package me.func.ebisu.model;
 
 import lombok.AllArgsConstructor;
 

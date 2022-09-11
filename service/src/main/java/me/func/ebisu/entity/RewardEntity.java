@@ -1,19 +1,13 @@
 package me.func.ebisu.entity;
 
 import lombok.*;
-import me.func.ebisu.data.RewardType;
-import me.func.ebisu.data.RewardWrapper;
-import me.func.ebisu.entity.button.ButtonMirror;
-import me.func.protocol.menu.Button;
+import me.func.ebisu.model.RewardType;
 import org.hibernate.Hibernate;
 
 import javax.persistence.*;
 import java.util.Objects;
+import java.util.UUID;
 
-/**
- * @author func 05.09.2022
- * @project cases
- */
 @Entity
 @Getter
 @Setter
@@ -21,17 +15,20 @@ import java.util.Objects;
 @RequiredArgsConstructor
 @Table(name = "reward")
 @AllArgsConstructor
-public class RewardEntity implements ButtonMirror {
+public class RewardEntity {
 	@Id
 	@GeneratedValue
 	@Column(name = "reward_id")
 	private Long id;
 
-	@Column(nullable = false)
+	@Column(name = "reward_type", nullable = false)
 	private RewardType type;
 
-	@Column(nullable = false)
-	private RewardWrapper reward;
+	@Column(name = "reward_item_id", nullable = false)
+	private UUID rewardItemId;
+
+	@Column(name = "reward_data", nullable = false)
+	private String rewardData;
 
 	@Override
 	public boolean equals(Object o) {
@@ -44,13 +41,5 @@ public class RewardEntity implements ButtonMirror {
 	@Override
 	public int hashCode() {
 		return getClass().hashCode();
-	}
-
-	@Override
-	public Button asButton() {
-		return Button.builder()
-				.title("Награда номер " + id)
-				.texture("")
-				.build();
 	}
 }

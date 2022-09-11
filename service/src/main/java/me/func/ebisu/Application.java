@@ -5,10 +5,6 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.scheduling.annotation.EnableScheduling;
 import org.springframework.transaction.annotation.EnableTransactionManagement;
 
-/**
- * @author func 06.09.2022
- * @project cases
- */
 @SpringBootApplication
 @EnableTransactionManagement
 @EnableScheduling

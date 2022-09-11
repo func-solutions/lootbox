@@ -1,17 +1,13 @@
 package me.func.ebisu.entity;
 
 import lombok.*;
-import me.func.ebisu.data.RareType;
+import me.func.ebisu.model.Rarity;
 import org.hibernate.Hibernate;
 
 import javax.persistence.*;
 import java.util.Objects;
 import java.util.Set;
 
-/**
- * @author func 05.09.2022
- * @project cases
- */
 @Entity
 @Getter
 @Setter
@@ -24,7 +20,7 @@ public class PackEntity {
 	@Column(name = "pack_id")
 	private Long id;
 	private Double chance;
-	private RareType rare;
+	private Rarity rare;
 
 	@Column(name = "image_url")
 	private String imageUrl;
