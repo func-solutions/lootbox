@@ -3,6 +3,8 @@ package me.func.ebisu.entity;
 import lombok.*;
 import me.func.ebisu.data.RewardType;
 import me.func.ebisu.data.RewardWrapper;
+import me.func.ebisu.entity.button.ButtonMirror;
+import me.func.protocol.menu.Button;
 import org.hibernate.Hibernate;
 
 import javax.persistence.*;
@@ -19,7 +21,7 @@ import java.util.Objects;
 @RequiredArgsConstructor
 @Table(name = "reward")
 @AllArgsConstructor
-public class RewardEntity {
+public class RewardEntity implements ButtonMirror {
 	@Id
 	@GeneratedValue
 	@Column(name = "reward_id")
@@ -44,4 +46,11 @@ public class RewardEntity {
 		return getClass().hashCode();
 	}
 
+	@Override
+	public Button asButton() {
+		return Button.builder()
+				.title("Награда номер " + id)
+				.texture("")
+				.build();
+	}
 }

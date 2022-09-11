@@ -1,6 +1,9 @@
 package me.func.ebisu.data;
 
 import lombok.AllArgsConstructor;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
 
 import java.io.Serializable;
 import java.util.UUID;
@@ -10,6 +13,9 @@ import java.util.UUID;
  * @project cases
  */
 @AllArgsConstructor
+@Getter
+@Setter
+@NoArgsConstructor
 public class RewardWrapper implements Serializable {
 
 	private UUID uuid;

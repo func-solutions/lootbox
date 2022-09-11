@@ -1,7 +1,7 @@
 package me.func.ebisu;
 
+import lombok.RequiredArgsConstructor;
 import me.func.ebisu.service.user.DefaultCommandService;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.event.ContextRefreshedEvent;
 import org.springframework.context.event.EventListener;
 import org.springframework.stereotype.Component;
@@ -13,13 +13,10 @@ import ru.cristalix.core.microservice.MicroserviceBootstrap;
  * @project cases
  */
 @Component
+@RequiredArgsConstructor
 public class MicroService {
 
 	private final DefaultCommandService defaultCommandService;
-
-	public MicroService(@Autowired DefaultCommandService defaultCommandService) {
-		this.defaultCommandService = defaultCommandService;
-	}
 
 	@EventListener(ContextRefreshedEvent.class)
 	public void run() {
