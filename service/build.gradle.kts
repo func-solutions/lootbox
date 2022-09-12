@@ -10,12 +10,9 @@ dependencies {
     compileOnly("org.projectlombok:lombok:1.18.24")
     annotationProcessor("org.projectlombok:lombok:1.18.24")
 
-    implementation(project(":protocol"))
-
     implementation("com.google.code.gson:gson:2.9.1")
     implementation("me.func.animation-api:animation-api-protocol:2.7.27")
 
-    implementation("com.github.ben-manes.caffeine:caffeine:2.5.5")
     implementation("com.google.guava:guava:31.1-jre")
     implementation("it.unimi.dsi:fastutil:8.5.8")
     implementation("org.postgresql:postgresql:42.5.0")

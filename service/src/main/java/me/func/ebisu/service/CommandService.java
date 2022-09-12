@@ -1,6 +1,8 @@
 package me.func.ebisu.service;
 
 import lombok.RequiredArgsConstructor;
+import lombok.extern.slf4j.Slf4j;
+import lombok.val;
 import me.func.ebisu.configuration.MenuCommand;
 import org.springframework.stereotype.Service;
 import ru.cristalix.core.globalcommand.GlobalCommandManager;
@@ -8,6 +10,7 @@ import ru.cristalix.core.globalcommand.GlobalCommandManager;
 import javax.annotation.PostConstruct;
 import java.util.Map;
 
+@Slf4j
 @Service
 @RequiredArgsConstructor
 public class CommandService {
@@ -22,6 +25,11 @@ public class CommandService {
 	}
 
 	private void registerCachedMenuOpener(String command, MenuCommand menuCommand) {
-		commandManager.registerCommand(command, execution -> execution.sendPayload("storage:open-json", menuCommand.getCachedResponse()));
+		commandManager.registerCommand(command, execution -> {
+			val response = menuCommand.getCachedResponse();
+
+			log.info("Accept {} command from {}, response: {}", command, execution.getPlayer(), response);
+			execution.sendPayload("storage:open-json", response);
+		});
 	}
 }
