@@ -1,5 +1,6 @@
 package me.func.ebisu.configuration;
 
+import me.func.ebisu.model.MenuCommand;
 import me.func.ebisu.repository.BoxRepository;
 import me.func.ebisu.repository.EventRepository;
 import me.func.ebisu.repository.RewardRepository;
@@ -53,6 +54,7 @@ public class MenuCommandConfiguration {
 	}
 
 	public <T> MenuCommand menuCommand(int rows, int columns, String title, JpaRepository<T, Long> repository, int pageCount, Sort sort, BiConsumer<Button.Builder, T> creator) {
+
 		SelectionModel model = SelectionModel.builder().title(title).rows(rows).columns(columns).build();
 
 		Supplier<List<Button>> supplier = () -> repository.findAll(PageRequest.of(pageCount, model.pageSize(), sort))

@@ -11,7 +11,6 @@ import me.func.ebisu.repository.BoxRepository;
 import me.func.ebisu.repository.PackCaseRelationRepository;
 import me.func.ebisu.repository.PackRepository;
 import me.func.ebisu.repository.RewardRepository;
-import org.springframework.scheduling.annotation.Async;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -44,6 +43,7 @@ public class CristalixTowerService {
 
 	@Transactional
 	public void updatePackBoxRelation(long packId, long boxId, long count) {
+
 		val boxOptional = boxRepository.findById(packId);
 		if (boxOptional.isEmpty()) return;
 		BoxEntity box = boxOptional.get();

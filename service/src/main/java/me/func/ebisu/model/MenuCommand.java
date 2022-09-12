@@ -1,4 +1,4 @@
-package me.func.ebisu.configuration;
+package me.func.ebisu.model;
 
 import lombok.Data;
 import me.func.protocol.menu.Button;

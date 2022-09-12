@@ -3,7 +3,7 @@ package me.func.ebisu.service;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import lombok.val;
-import me.func.ebisu.configuration.MenuCommand;
+import me.func.ebisu.model.MenuCommand;
 import org.springframework.stereotype.Service;
 import ru.cristalix.core.globalcommand.GlobalCommandManager;
 
@@ -25,6 +25,7 @@ public class CommandService {
 	}
 
 	private void registerCachedMenuOpener(String command, MenuCommand menuCommand) {
+
 		commandManager.registerCommand(command, execution -> {
 			val response = menuCommand.getCachedResponse();
 

@@ -13,6 +13,7 @@ public class MicroService {
 
 	@Bean
 	public ISocketClient run() {
+
 		MicroserviceBootstrap.bootstrap(new MicroServicePlatform(2));
 		return ISocketClient.get();
 	}
@@ -24,6 +25,7 @@ public class MicroService {
 
 	@Bean
 	public GlobalCommandManager globalCommandManager() {
+
 		GlobalCommandManager commandManager = new GlobalCommandManager(ISocketClient.get(), "ebisu");
 		commandManager.start();
 		return commandManager;
