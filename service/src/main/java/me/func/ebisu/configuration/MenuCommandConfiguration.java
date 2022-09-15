@@ -1,5 +1,6 @@
 package me.func.ebisu.configuration;
 
+import lombok.extern.slf4j.Slf4j;
 import me.func.ebisu.model.MenuCommand;
 import me.func.ebisu.repository.BoxRepository;
 import me.func.ebisu.repository.EventRepository;
@@ -57,7 +58,7 @@ public class MenuCommandConfiguration {
 
 		SelectionModel model = SelectionModel.builder().title(title).rows(rows).columns(columns).build();
 
-		Supplier<List<Button>> supplier = () -> repository.findAll(PageRequest.of(pageCount, model.pageSize(), sort))
+		Supplier<List<Button>> supplier = () -> repository.findAll(PageRequest.of(0, model.pageSize() * pageCount, sort))
 				.stream()
 				.map(object -> {
 					Button.Builder builder = Button.builder();

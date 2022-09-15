@@ -28,6 +28,7 @@ public class MenuCommandUpdater {
 
 		for (MenuCommand command : commands) {
 			List<Button> buttons = command.getButtonSupplier().get();
+
 			SelectionModel model = command.getModel();
 			model.setData(buttons);
 			command.setCachedResponse(GlobalSerializers.toJson(model));

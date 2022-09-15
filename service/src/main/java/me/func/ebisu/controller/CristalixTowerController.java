@@ -2,10 +2,7 @@ package me.func.ebisu.controller;
 
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
-import me.func.ebisu.network.AddBoxesPackage;
-import me.func.ebisu.network.AddPacksPackage;
-import me.func.ebisu.network.AddRewardsPackage;
-import me.func.ebisu.network.SetPackCaseRelationPackage;
+import me.func.ebisu.network.*;
 import me.func.ebisu.service.CristalixTowerService;
 import org.springframework.stereotype.Component;
 import ru.cristalix.core.network.Capability;
@@ -41,7 +38,7 @@ public class CristalixTowerController {
 
 	}
 
-	private <T extends CorePackage> void registerListener(Class<T> type, BiConsumer<RealmId, T> handler) {
+	private <T extends OutPackage> void registerListener(Class<T> type, BiConsumer<RealmId, T> handler) {
 
 		client.registerCapability(Capability.builder()
 				.className(type.getSimpleName())
@@ -49,14 +46,17 @@ public class CristalixTowerController {
 				.build()
 		);
 
-		client.addListener(type, (realmId, t) -> {
-			log.debug("Got package {} from realm {}", t.getClass().getName(), realmId.getRealmName());
+		client.addListener(type, (realmId, pckg) -> {
+			log.debug("Got package {} from realm {}", pckg.getClass().getName(), realmId.getRealmName());
 			try {
-				handler.accept(realmId, t);
+				handler.accept(realmId, pckg);
+				pckg.setSuccess(true);
 			} catch (Exception ex) {
-				log.error("Error handling " + t.getClass().getName() + " from " + realmId.getRealmName() + ": " + t, ex);
-				throw ex;
+				log.error("Error handling " + pckg.getClass().getName() + " from " + realmId.getRealmName() + ": " + pckg, ex);
+				pckg.setSuccess(false);
+				pckg.setErrorMessage(ex.getMessage());
 			}
+			client.write(pckg);
 		});
 
 	}

@@ -21,14 +21,21 @@ public class CommandService {
 
 	@PostConstruct
 	public void run() {
+
 		commandMap.forEach(this::registerCachedMenuOpener);
+
+		commandManager.registerCommand("box-buy", execution -> {
+
+			log.info("Get buy request from {}.", execution.getPlayer());
+
+		});
 	}
 
 	private void registerCachedMenuOpener(String command, MenuCommand menuCommand) {
 
 		commandManager.registerCommand(command, execution -> {
-			val response = menuCommand.getCachedResponse();
 
+			val response = menuCommand.getCachedResponse();
 			log.info("Accept {} command from {}, response: {}", command, execution.getPlayer(), response);
 			execution.sendPayload("storage:open-json", response);
 		});
