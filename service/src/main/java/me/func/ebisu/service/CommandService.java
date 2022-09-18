@@ -21,14 +21,7 @@ public class CommandService {
 
 	@PostConstruct
 	public void run() {
-
 		commandMap.forEach(this::registerCachedMenuOpener);
-
-		commandManager.registerCommand("box-buy", execution -> {
-
-			log.info("Get buy request from {}.", execution.getPlayer());
-
-		});
 	}
 
 	private void registerCachedMenuOpener(String command, MenuCommand menuCommand) {
