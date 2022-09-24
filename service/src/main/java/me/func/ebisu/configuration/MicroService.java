@@ -2,6 +2,7 @@ package me.func.ebisu.configuration;
 
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.context.annotation.Profile;
 import ru.cristalix.core.CoreApi;
 import ru.cristalix.core.coupons.CouponsService;
 import ru.cristalix.core.coupons.ICouponsService;
@@ -12,6 +13,7 @@ import ru.cristalix.core.microservice.MicroServicePlatform;
 import ru.cristalix.core.microservice.MicroserviceBootstrap;
 import ru.cristalix.core.network.ISocketClient;
 
+@Profile("prod")
 @Configuration
 public class MicroService {
 
@@ -28,9 +30,9 @@ public class MicroService {
 	}
 
 	@Bean
-	public GlobalCommandManager globalCommandManager() {
+	public GlobalCommandManager globalCommandManager(ISocketClient socketClient) {
 
-		GlobalCommandManager commandManager = new GlobalCommandManager(ISocketClient.get(), "ebisu");
+		GlobalCommandManager commandManager = new GlobalCommandManager(socketClient, "ebisu");
 		commandManager.start();
 		return commandManager;
 	}

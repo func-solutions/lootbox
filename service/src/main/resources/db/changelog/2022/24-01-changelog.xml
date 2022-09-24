@@ -1,0 +1,118 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<databaseChangeLog
+        xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
+                      https://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-4.9.xsd"
+        objectQuotingStrategy="QUOTE_ONLY_RESERVED_WORDS">
+    <changeSet id="1664035790144-1" author="func (generated)">
+        <createSequence incrementBy="1" sequenceName="hibernate_sequence" startValue="1"/>
+    </changeSet>
+    <changeSet id="1664035790144-2" author="func (generated)">
+        <createTable tableName="box">
+            <column name="box_id" type="BIGINT">
+                <constraints nullable="false" primaryKey="true" primaryKeyName="pk_box"/>
+            </column>
+            <column name="price" type="DOUBLE">
+                <constraints nullable="false"/>
+            </column>
+            <column name="title" type="VARCHAR(255)"/>
+            <column name="texture" type="VARCHAR(255)"/>
+            <column name="description" type="VARCHAR(255)"/>
+            <column name="currency" type="VARCHAR(255)"/>
+            <column name="status" type="VARCHAR(255)"/>
+            <column name="vault" type="VARCHAR(255)"/>
+        </createTable>
+    </changeSet>
+    <changeSet id="1664035790144-3" author="func (generated)">
+        <createTable tableName="event">
+            <column name="event_id" type="BIGINT">
+                <constraints nullable="false" primaryKey="true" primaryKeyName="pk_event"/>
+            </column>
+            <column name="timestamp" type="DATETIME"/>
+            <column name="pack_pack_id" type="BIGINT"/>
+            <column name="box_box_id" type="BIGINT"/>
+            <column name="player_uuid" type="UUID"/>
+        </createTable>
+    </changeSet>
+    <changeSet id="1664035790144-4" author="func (generated)">
+        <createTable tableName="pack">
+            <column name="pack_id" type="BIGINT">
+                <constraints nullable="false" primaryKey="true" primaryKeyName="pk_pack"/>
+            </column>
+            <column name="chance" type="DOUBLE"/>
+            <column name="rare" type="INT"/>
+            <column name="image_url" type="VARCHAR(255)"/>
+        </createTable>
+    </changeSet>
+    <changeSet id="1664035790144-5" author="func (generated)">
+        <createTable tableName="pack_case_relation">
+            <column name="id" type="BIGINT">
+                <constraints nullable="false" primaryKey="true" primaryKeyName="pk_pack_case_relation"/>
+            </column>
+            <column name="pack_pack_id" type="BIGINT"/>
+            <column name="box_box_id" type="BIGINT"/>
+            <column name="amount" type="BIGINT"/>
+        </createTable>
+    </changeSet>
+    <changeSet id="1664035790144-6" author="func (generated)">
+        <createTable tableName="pack_rewards">
+            <column name="pack_entity_pack_id" type="BIGINT">
+                <constraints nullable="false" primaryKey="true" primaryKeyName="pk_pack_rewards"/>
+            </column>
+            <column name="rewards_reward_id" type="BIGINT">
+                <constraints nullable="false" primaryKey="true" primaryKeyName="pk_pack_rewards"/>
+            </column>
+        </createTable>
+    </changeSet>
+    <changeSet id="1664035790144-7" author="func (generated)">
+        <createTable tableName="reward">
+            <column name="reward_id" type="BIGINT">
+                <constraints nullable="false" primaryKey="true" primaryKeyName="pk_reward"/>
+            </column>
+            <column name="reward_type" type="INT">
+                <constraints nullable="false"/>
+            </column>
+            <column name="reward_item_id" type="UUID">
+                <constraints nullable="false"/>
+            </column>
+            <column name="reward_data" type="VARCHAR(255)">
+                <constraints nullable="false"/>
+            </column>
+        </createTable>
+    </changeSet>
+    <changeSet id="1664035790144-8" author="func (generated)">
+        <addUniqueConstraint columnNames="rewards_reward_id" constraintName="uc_pack_rewards_rewards_reward"
+                             tableName="pack_rewards"/>
+    </changeSet>
+    <changeSet id="1664035790144-9" author="func (generated)">
+        <addForeignKeyConstraint baseColumnNames="box_box_id" baseTableName="event" constraintName="FK_EVENT_ON_BOX_BOX"
+                                 referencedColumnNames="box_id" referencedTableName="box"/>
+    </changeSet>
+    <changeSet id="1664035790144-10" author="func (generated)">
+        <addForeignKeyConstraint baseColumnNames="pack_pack_id" baseTableName="event"
+                                 constraintName="FK_EVENT_ON_PACK_PACK" referencedColumnNames="pack_id"
+                                 referencedTableName="pack"/>
+    </changeSet>
+    <changeSet id="1664035790144-11" author="func (generated)">
+        <addForeignKeyConstraint baseColumnNames="box_box_id" baseTableName="pack_case_relation"
+                                 constraintName="FK_PACK_CASE_RELATION_ON_BOX_BOX" referencedColumnNames="box_id"
+                                 referencedTableName="box"/>
+    </changeSet>
+    <changeSet id="1664035790144-12" author="func (generated)">
+        <addForeignKeyConstraint baseColumnNames="pack_pack_id" baseTableName="pack_case_relation"
+                                 constraintName="FK_PACK_CASE_RELATION_ON_PACK_PACK" referencedColumnNames="pack_id"
+                                 referencedTableName="pack"/>
+    </changeSet>
+    <changeSet id="1664035790144-13" author="func (generated)">
+        <addForeignKeyConstraint baseColumnNames="pack_entity_pack_id" baseTableName="pack_rewards"
+                                 constraintName="fk_pacrew_on_pack_entity" referencedColumnNames="pack_id"
+                                 referencedTableName="pack"/>
+    </changeSet>
+    <changeSet id="1664035790144-14" author="func (generated)">
+        <addForeignKeyConstraint baseColumnNames="rewards_reward_id" baseTableName="pack_rewards"
+                                 constraintName="fk_pacrew_on_reward_entity" referencedColumnNames="reward_id"
+                                 referencedTableName="reward"/>
+    </changeSet>
+
+</databaseChangeLog>

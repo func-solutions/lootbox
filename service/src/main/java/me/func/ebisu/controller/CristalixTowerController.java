@@ -6,7 +6,6 @@ import me.func.ebisu.network.*;
 import me.func.ebisu.service.CristalixTowerService;
 import org.springframework.stereotype.Component;
 import ru.cristalix.core.network.Capability;
-import ru.cristalix.core.network.CorePackage;
 import ru.cristalix.core.network.ISocketClient;
 import ru.cristalix.core.realm.RealmId;
 

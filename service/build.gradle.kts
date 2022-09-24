@@ -20,10 +20,22 @@ dependencies {
     implementation("io.netty:netty-all:4.1.78.Final")
     implementation("org.springframework.boot:spring-boot-starter")
     implementation("org.springframework.boot:spring-boot-starter-data-jpa")
+    implementation("org.liquibase:liquibase-core")
+
+    testImplementation("org.springframework.boot:spring-boot-starter-test")
+    testImplementation("org.springframework.boot:spring-boot-test")
+    testImplementation("org.junit.jupiter:junit-jupiter-engine:5.8.1")
+    testCompileOnly("org.projectlombok:lombok:1.18.24")
+    testImplementation("org.mockito:mockito-core:4.8.0")
+    testAnnotationProcessor("org.projectlombok:lombok:1.18.24")
 }
 
 application {
     mainClass.set("me.func.ebisu.Application")
+}
+
+tasks.getByName<Jar>("jar") {
+    manifest { attributes(mapOf("Main-Class" to application.mainClass)) }
 }
 
 tasks {

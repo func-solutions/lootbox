@@ -25,9 +25,13 @@ public class BoxEntity {
 
 	private String texture;
 
+	private String description;
+
 	private String currency;
 
 	private String status;
+
+	private String vault;
 
 	@Override
 	public boolean equals(Object o) {
