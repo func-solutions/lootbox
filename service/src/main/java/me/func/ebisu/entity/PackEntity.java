@@ -19,7 +19,6 @@ public class PackEntity {
 	@GeneratedValue
 	@Column(name = "pack_id")
 	private Long id;
-	private Double chance;
 	private Rarity rare;
 
 	@Column(name = "image_url")
@@ -28,6 +27,8 @@ public class PackEntity {
 	@OneToMany(targetEntity = RewardEntity.class)
 	@ToString.Exclude
 	private Set<RewardEntity> rewards;
+
+	private Boolean unique;
 
 	@Override
 	public boolean equals(Object o) {

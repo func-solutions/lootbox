@@ -32,13 +32,14 @@ public class LootboxService {
 
 		log.info("Start generating drop for {}, data: {}", player, box);
 
-		// Смотрим что игрок уже выбил, создаем списочек,
-		val alreadyDropped = eventRepository.getByBoxAndPlayerUuid(box, player).stream()
+		// Смотрим что игрок уже выбил уникальные, создаем списочек,
+		val alreadyDroppedUnique = eventRepository.getByBoxAndPlayerUuid(box, player).stream()
 				.map(EventEntity::getPack)
+				.filter(PackEntity::getUnique)
 				.collect(Collectors.toSet());
 
 		// Передаем его в relation и выбираем случайный не из этих
-		val randomDrop = relationRepository.findRandomRelation(box, alreadyDropped);
+		val randomDrop = relationRepository.findRandomRelation(box, alreadyDroppedUnique);
 
 		if (randomDrop.isEmpty())
 			return null;

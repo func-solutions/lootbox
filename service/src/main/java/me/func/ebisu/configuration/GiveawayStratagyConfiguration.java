@@ -1,6 +1,6 @@
 package me.func.ebisu.configuration;
 
-import me.func.ebisu.entity.Giveaway;
+import me.func.ebisu.model.Giveaway;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 
