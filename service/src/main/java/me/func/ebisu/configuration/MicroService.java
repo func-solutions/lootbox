@@ -12,6 +12,8 @@ import ru.cristalix.core.invoice.InvoiceService;
 import ru.cristalix.core.microservice.MicroServicePlatform;
 import ru.cristalix.core.microservice.MicroserviceBootstrap;
 import ru.cristalix.core.network.ISocketClient;
+import ru.cristalix.core.p13n.IP13nService;
+import ru.cristalix.core.p13n.P13nService;
 
 @Profile("prod")
 @Configuration

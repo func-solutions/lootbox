@@ -1,6 +1,5 @@
 package me.func.ebisu.configuration;
 
-import lombok.extern.slf4j.Slf4j;
 import me.func.ebisu.model.MenuCommand;
 import me.func.ebisu.repository.BoxRepository;
 import me.func.ebisu.repository.EventRepository;

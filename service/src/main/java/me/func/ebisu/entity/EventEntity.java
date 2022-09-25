@@ -44,4 +44,10 @@ public class EventEntity {
 		return getClass().hashCode();
 	}
 
+	public EventEntity(Timestamp timestamp, PackEntity pack, BoxEntity box, UUID playerUuid) {
+		this.timestamp = timestamp;
+		this.pack = pack;
+		this.box = box;
+		this.playerUuid = playerUuid;
+	}
 }
