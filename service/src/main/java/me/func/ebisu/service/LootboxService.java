@@ -6,8 +6,6 @@ import lombok.val;
 import me.func.ebisu.entity.BoxEntity;
 import me.func.ebisu.entity.EventEntity;
 import me.func.ebisu.entity.PackEntity;
-import me.func.ebisu.model.RewardType;
-import me.func.ebisu.repository.BoxRepository;
 import me.func.ebisu.repository.EventRepository;
 import me.func.ebisu.repository.PackCaseRelationRepository;
 import org.springframework.context.annotation.Profile;

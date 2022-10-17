@@ -10,8 +10,6 @@ import ru.cristalix.core.globalcommand.GlobalCommandManager;
 import ru.cristalix.core.invoice.IInvoiceService;
 import ru.cristalix.core.invoice.InvoiceService;
 import ru.cristalix.core.network.ISocketClient;
-import ru.cristalix.core.p13n.IP13nService;
-import ru.cristalix.core.p13n.P13nService;
 
 @Configuration
 public class MockedMicroService {

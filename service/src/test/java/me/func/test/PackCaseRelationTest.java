@@ -34,8 +34,8 @@ public class PackCaseRelationTest {
 		val packSecond = packRepository.findById(2L).orElseThrow();
 		val box = boxRepository.findById(1L).orElseThrow();
 
-		val hasDrop = packCaseRelationRepository.findRandomRelation(box, Set.of(packSecond)).orElseThrow();
 		val notNullDrop = packCaseRelationRepository.findRandomRelation(box, Set.of()).orElse(null);
+		val hasDrop = packCaseRelationRepository.findRandomRelation(box, Set.of(packSecond)).orElseThrow();
 		val nullDrop = packCaseRelationRepository.findRandomRelation(box, Set.of(packFirst)).orElse(null);
 
 		Assertions.assertNotNull(notNullDrop);

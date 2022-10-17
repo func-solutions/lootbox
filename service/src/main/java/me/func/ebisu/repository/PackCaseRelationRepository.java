@@ -15,8 +15,7 @@ public interface PackCaseRelationRepository extends JpaRepository<PackCaseRelati
 
 	Optional<PackCaseRelationEntity> findByBoxAndPack(BoxEntity box, PackEntity pack);
 
-	@Query(value = "SELECT * FROM pack_case_relation " +
-			"WHERE amount > 0 and box_box_id = ?1 and (?2 is NULL or pack_pack_id not in ?2) ORDER BY random() LIMIT 1", nativeQuery = true)
+	@Query(value = "SELECT * FROM pack_case_relation WHERE amount > 0 and box_box_id = ?1 and (?2 is NULL or pack_pack_id not in ?2) ORDER BY random() LIMIT 1", nativeQuery = true)
 	Optional<PackCaseRelationEntity> findRandomRelation(BoxEntity boxEntity, Set<PackEntity> ignore);
 
 }
