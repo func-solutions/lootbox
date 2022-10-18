@@ -27,11 +27,14 @@ public class PlayerService {
 
 	public CompletableFuture<Void> giveReward(UUID player, PackEntity pack) {
 
-		log.info("Give rewards to {}, pack: {}", player, pack);
+		// todo: тут вызывается, дальше в getRewards пустота
 
 		return CompletableFuture.allOf(pack.getRewards().stream().map(reward -> {
 
-			val giveaway = stratagies.get(reward.getType().name().toLowerCase(Locale.ROOT));
+			val stratagy = reward.getType().name().toLowerCase(Locale.ROOT);
+			val giveaway = stratagies.get(stratagy);
+
+			log.info("Give reward to {}, pack {}, stratagy {}", player, pack, stratagy);
 
 			return giveaway == null ? CompletableFuture.completedFuture(null) : giveaway.accept(player, reward);
 
@@ -45,9 +48,11 @@ public class PlayerService {
 		return invoiceService.bill(player, invoice);
 	}
 
-	public CompletableFuture<Boolean> hasMoney(UUID player, int money) {
+	public CompletableFuture<Integer> getBalance(UUID player) {
 
-		return invoiceService.getBalanceData(player).thenApply(data -> data.getTotalCrystals() >= money);
+		log.info("Request money data from {}", player);
+
+		return invoiceService.getBalanceData(player).thenApply(data -> data.getCrystals() + data.getCoins());
 	}
 
 }
