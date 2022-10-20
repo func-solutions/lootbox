@@ -3,6 +3,7 @@ package me.func.ebisu.entity;
 import lombok.*;
 import me.func.ebisu.model.Rarity;
 import org.hibernate.Hibernate;
+import org.jetbrains.annotations.NotNull;
 
 import javax.persistence.*;
 import java.util.Objects;
@@ -19,12 +20,13 @@ public class PackEntity {
 	@GeneratedValue
 	@Column(name = "pack_id")
 	private Long id;
+
 	private Rarity rare;
 
 	@Column(name = "image_url")
 	private String imageUrl;
 
-	@OneToMany(targetEntity = RewardEntity.class)
+	@OneToMany(targetEntity = RewardEntity.class, fetch = FetchType.EAGER)
 	@ToString.Exclude
 	private Set<RewardEntity> rewards;
 

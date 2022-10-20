@@ -27,8 +27,6 @@ public class PlayerService {
 
 	public CompletableFuture<Void> giveReward(UUID player, PackEntity pack) {
 
-		// todo: тут вызывается, дальше в getRewards пустота
-
 		return CompletableFuture.allOf(pack.getRewards().stream().map(reward -> {
 
 			val stratagy = reward.getType().name().toLowerCase(Locale.ROOT);

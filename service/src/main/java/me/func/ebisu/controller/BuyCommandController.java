@@ -4,14 +4,17 @@ import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import lombok.val;
 import me.func.ebisu.entity.BoxEntity;
+import me.func.ebisu.network.BroadcastMessagePackage;
+import me.func.ebisu.network.PlayerDropPackage;
 import me.func.ebisu.repository.BoxRepository;
 import me.func.ebisu.service.LootboxService;
 import me.func.ebisu.service.PlayerService;
 import org.springframework.stereotype.Component;
+import ru.cristalix.core.GlobalSerializers;
 import ru.cristalix.core.globalcommand.GlobalCommandManager;
 import ru.cristalix.core.invoice.Invoice;
 import ru.cristalix.core.invoice.InvoiceResult;
-import ru.cristalix.core.plugin.TextPluginMessage;
+import ru.cristalix.core.network.ISocketClient;
 
 import javax.annotation.PostConstruct;
 
@@ -24,6 +27,7 @@ public class BuyCommandController {
 	private final PlayerService playerService;
 	private final LootboxService lootboxService;
 	private final BoxRepository boxRepository;
+	private final ISocketClient socketClient;
 
 	@PostConstruct
 	public void run() {
@@ -73,7 +77,12 @@ public class BuyCommandController {
 		giveawayFuture.thenAccept(unused -> {
 
 			log.info("Drop given to {}.", execution.getPlayer());
+
 			execution.sendPayload("func:close", "");
+			execution.sendPayload("ebisu:fine", GlobalSerializers.toJson(rolled));
+
+			socketClient.forward(execution.getServer(), new PlayerDropPackage(execution.getPlayer(), rolled));
+			socketClient.write(new BroadcastMessagePackage( "{\"text\":\"Игрок выбил новый предмет!\",\"color\":\"blue\",\"clickEvent\":{\"action\":\"suggest_command\", \"value\":\"/run\"}}"));
 		});
 	}
 }
